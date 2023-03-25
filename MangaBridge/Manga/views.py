@@ -54,7 +54,7 @@ def MangaView(request, id):
 
 def NewUploads(request):
     chapter = Chapter.objects.all().order_by("-relase_date")
-    paginator = Paginator(chapter, 50)
+    paginator = Paginator(chapter, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
