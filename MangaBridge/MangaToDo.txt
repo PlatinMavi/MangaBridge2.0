@@ -1,7 +1,5 @@
-Duyuru
-kategori
-detailview
-sponsor-reklam alanı
+arama çubuğu
+kategori-sayfası
 dolu linkler
 user login
 user bookmark
@@ -9,3 +7,5 @@ notificate bookmark
 sss
 derecelendirme
 yorum
+mangabridge çeviri-okuma
++18 kısım

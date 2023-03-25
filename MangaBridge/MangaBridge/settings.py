@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Users.apps.UsersConfig',
     'Manga.apps.MangaConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = "Users.CustomUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,11 +81,12 @@ WSGI_APPLICATION = 'MangaBridge.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'hTzptlj82ngKHzWgv73C',
-        'HOST': 'containers-us-west-43.railway.app',
-        'PORT': '5488',
+        'NAME': 'MangaBridgeTest0',
+        'USER': 'PlatinMavi',
+        'PASSWORD': 'pM1108Ag',
+        'HOST': 'mangabridge1.postgres.database.azure.com',
+        'PORT': '5432',
+        "OPTIONS":{"sslmode":"require"}
     }
 }
 
@@ -120,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
