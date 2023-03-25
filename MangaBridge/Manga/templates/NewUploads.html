@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for x in Chapter %}
+        {{ x.manga }}<br>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if Chapter.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ Chapter.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ Chapter.number }} of {{ Chapter.paginator.num_pages }}.
+            </span>
+    
+            {% if Chapter.has_next %}
+                <a href="?page={{ Chapter.next_page_number }}">next</a>
+                <a href="?page={{ Chapter.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
+

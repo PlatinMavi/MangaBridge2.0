@@ -63,9 +63,12 @@
                 <h4 class="text-xl mx-auto w-max M my-2">Kategori</h4>
                 <div class="grid grid-cols-2 mx-auto gap-1">
                     
-                    {%for x in Kategori%}
-                        <p class="mx-auto shadow-lg p-3">{{x.category.Category_name}}</p>
-                    {%endfor%}
+                    {%if Categorys %}
+                        {%for x in Categorys%}
+                            <p class="mx-auto shadow-lg p-3">{{x.category_name}}</p>
+                        {%endfor%}
+                    {%endif%}
+
                 </div>
                 <hr class="h-px my-4 bg-gray-900 border-0">
             </div>
@@ -80,12 +83,12 @@
                     {%for x in Fansub%}
                         <div class="MmM hidden" id="{{x.fansub_name}}">
                             <h3 class="M text-3xl w-max mx-auto my-5">{{x.fansub_name}}</h3>
-                            <div class="grid grid-cols-5 gap-8 mx-auto">
+                            <div class="grid grid-cols-6 gap-8 mx-auto">
                                 {%for y in Chapter%}
                                     {%if y.fansub.fansub_name == x.fansub_name %}
                                         <a href="{{y.chapter_url}}" target="_blank">
-                                            <div class="h-20 bg-gradient-to-r from-rose-100 to-teal-100 p-4 object-center">
-                                                <h5 class="M text-2xl w-max mx-auto mt-1">{{y.chapter_number}}. Bölüm</h5>
+                                            <div class="h-12 bg-gradient-to-r from-rose-100 to-teal-100 p-2 object-center">
+                                                <h5 class="M text-xl w-max mx-auto">{{y.chapter_number}}. Bölüm</h5>
                                             </div>
                                         </a>
                                     {%endif%}

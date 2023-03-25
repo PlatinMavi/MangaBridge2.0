@@ -8,37 +8,43 @@
 
     <title>{% block title %} MangaBridge {% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'Index.css' %}">
-    <link rel="stylesheet" href="{% static 'MangaView.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/Index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Poppins:wght@500&family=Sacramento&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@400;700&family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8ae22b070a.js" crossorigin="anonymous"></script>
+    <style>
+        .B{
+            font-family: 'Bebas Neue', cursive;
+        }
+        .D{
+            font-family: 'Dosis', sans-serif;
+        }
+        .M{
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
 
 </head>
-<body>
-    <div class="navbar">
-        <a href=""><i class="fa-solid fa-house icon"></i></a>
-        <a href="" class="search"><i class="fa-solid fa-magnifying-glass icon"></i></a>
-        <a href="" class="search"><i class="fa-solid fa-user icon"></i></a>
-        <a href=""><i class="fa-solid fa-clipboard icon"></i></a>
-        <a href=""><i class="fa-solid fa-book icon"></i></a>
-        <a href=""><i class="fa-solid fa-bookmark icon"></i></a>
-        <a href=""><i class="fa-brands fa-discord icon"></i></a>
-        <a href=""><i class="fa-solid fa-filter icon"></i></a>
-    </div>
-
-    <div class="sidebar">
-        <a href="" class="down"><i class="fa-solid fa-envelope icon"></i></a>
-        <a href="" class="downe"><i class="fa-solid fa-question icon"></i></a>
-    </div>
-    <div class="container">
+<body class="bg-gradient-to-r from-rose-100 to-teal-100">
+    <nav class="w-full fixed top-0 left-0 z-50 p-2 mb-16">
+        <div class=" p-4 flex my-2 mx-auto w-max">
+            <a href="/"><i class="fa-solid fa-house fa-2xl text-white mx-4 w-max"></i></a>
+            <a href="Archive.html"><i class="fa-solid fa-book fa-2xl text-white mx-4 w-max"></i></a>
+            <a href="SSS.html"><i class="fa-solid fa-question fa-2xl text-white mx-4 w-max"></i></a>
+            <a href=""><i class="fa-solid fa-magnifying-glass fa-2xl text-white mx-4 w-max"></i></a>
+            <a href="Upload.html"><i class="fa-solid fa-up-right-from-square fa-2xl text-white mx-4 w-max"></i></a>
+            <a href="Duyuru.html"><i class="fa-solid fa-bullhorn fa-2xl fa-2xl text-white mx-4 w-max"></i></a>
+            <a href=""><i class="fa-solid fa-bookmark fa-2xl text-white mx-4 w-max"></i></a>
+            <a href=""><i class="fa-solid fa-user fa-2xl text-white mx-4 w-max"></i></a>
+        </div>
+    </nav>
         {% block content %}
         
         {% endblock %}
-    </div>
-    <div class="footer"><p>footer</p></div>
+
+
 </body>
 </html>
