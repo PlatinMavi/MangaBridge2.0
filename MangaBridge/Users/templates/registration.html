@@ -1,0 +1,10 @@
+{% extends "Boilerplate.html"%}
+{% block content%}
+<div class="mt-24 mx-auto w-max bg-teal-50 p-4">
+    <form method="POST">
+        {%csrf_token%}
+        <fieldset><legend>Join Today</legend> {{Form.as_p}} </fieldset>
+        <button type="submit">submit</button>
+    </form>
+</div>
+{%endblock content%}
