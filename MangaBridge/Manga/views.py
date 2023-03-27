@@ -65,3 +65,14 @@ def NewUploads(request):
     template = loader.get_template("NewUploads.html")
 
     return HttpResponse(template.render(context, request))
+
+def DuyuruView(request):
+    duyuru = Duyuru.objects.all().order_by("-id")
+
+    context = {
+        "Duyuru":duyuru
+    }
+
+    template = loader.get_template("Duyuru.html")
+
+    return HttpResponse(template.render(context, request))

@@ -1,0 +1,23 @@
+{%extends "Boilerplate.html"%}
+{% block title %}Duyuru{% endblock %}
+{%load static%}
+{%block content%}
+    <div class="container mx-auto text-white mt-24">
+        <h1 class="text-4xl D w-max mx-auto my-2">Duyurular</h2>
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+
+        {% for x in Duyuru %}
+            <div class="bgl p-4">
+                <h1 class="text-2xl M my-2"> {{x.title}} </h1>
+                <p> {{x.description}} </p>
+            </div>
+        {%endfor%}
+
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+    </div>
+{%endblock content%}

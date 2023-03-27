@@ -26,11 +26,20 @@
         .M{
             font-family: 'Montserrat', sans-serif;
         }
+        .bgd{
+            background-color: #152D35;
+        }
+        .bgl{
+            background-color: #345B63;
+        }
+        .bgvl{
+            background-color: #D4ECDD;
+        }
     </style>
 
 </head>
-<body class="bg-gradient-to-r from-rose-100 to-teal-100">
-    <nav class="w-full fixed top-0 left-0 z-50 bg-black bg-opacity-40">
+<body class="bgd">
+    <nav class="w-full fixed top-0 left-0 z-50 " style="background-color: #152d3573;">
         <div class="flex ">
             <div class=" p-4 flex my-2 ml-4">
                 <a href="/"><i class="fa-solid fa-house fa-2xl text-white mx-4 w-max"></i></a>
@@ -38,7 +47,7 @@
                 <a href="SSS.html"><i class="fa-solid fa-question fa-2xl text-white mx-4 w-max"></i></a>
                 <a href=""><i class="fa-solid fa-magnifying-glass fa-2xl text-white mx-4 w-max"></i></a>
                 <a href="/NewUpload"><i class="fa-solid fa-up-right-from-square fa-2xl text-white mx-4 w-max"></i></a>
-                <a href="Duyuru.html"><i class="fa-solid fa-bullhorn fa-2xl fa-2xl text-white mx-4 w-max"></i></a>
+                <a href="/Duyuru"><i class="fa-solid fa-bullhorn fa-2xl fa-2xl text-white mx-4 w-max"></i></a>
                 <a href=""><i class="fa-solid fa-bookmark fa-2xl text-white mx-4 w-max"></i></a>
             </div>
             {% if user.is_authenticated%}

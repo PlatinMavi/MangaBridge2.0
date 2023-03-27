@@ -11,10 +11,10 @@
         </div>
     </div>
 
-    <div class="container mt-6 mx-auto">
+    <div class="container mt-6 mx-auto text-white">
 
         <h2 class="text-4xl D w-max mx-auto my-2">En çok Okunanlar</h2>
-        <hr class="h-px my-4 bg-gray-900 border-0">
+        <hr class="h-px my-4 bg-white border-0">
         <div class="grid grid-cols-5 mx-auto">
             {%for x in MostView%}
                 <div class="capsule_wrapper mx-auto">
@@ -29,8 +29,8 @@
             {%endfor%}
         </div>
 
-        <hr class="h-px my-4 bg-gray-900 border-0">
-        <div class="rounded-2xl w-full shadow-lg my-10 bg-teal-50">
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="rounded-2xl w-full shadow-lg my-10 bgl">
             <table class="my-auto ">
                 <tr class="">
                     <td>
@@ -44,16 +44,16 @@
             <p class="px-6 py-4 text-md pb-8">{{Duyuru.description}}</p>
         </div>
 
-        <hr class="h-px my-4 bg-gray-900 border-0">
+        <hr class="h-px my-4 bg-white border-0">
         <div class="grid grid-cols-3 gap-6 mx-auto my-8">
-                <a class="w-sm bg-gradient-to-r from-rose-200 to-teal-200 h-64" href="/NewUpload">
+                <a class="w-sm bgl h-64" href="/NewUpload">
                     <i class="fa-solid fa-up-right-from-square w-max my-8 mx-auto flex" style="font-size: 80px;"></i>
                     <h3 class="text-4xl D w-max p-6 mx-auto">Yeni Bölümler</h3>
                 </a>
             {%for x in Chapter%}
                 <a class="" href="details/{{ x.manga.id }}">
                     <h3 class="text-2xl D w-max mx-3">{{x.manga.manga_name}}</h3>
-                    <div class=" h-56 w-sm bg-teal-50">
+                    <div class=" h-56 w-sm bgl">
                         <table>
                             <tr>
                                 <td><img src="media/{{x.manga.manga_image}} " alt="" class="object-fill h-56 w-40"></td>
@@ -71,12 +71,12 @@
                 </a>
             {%endfor%}
         </div>
-        <hr class="h-px my-4 bg-gray-900 border-0">
+        <hr class="h-px my-4 bg-white border-0">
         <div class="w-full h-96 bg-white rounded-lg my-5">
             <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
         </div>
 
-        <footer class="h-72 bg-gradient-to-r from-gray-700 via-gray-900 to-black mb-16">
+        <footer class="h-72 bgl to-black mb-16">
 
         </footer>
 
