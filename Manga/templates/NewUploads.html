@@ -1,0 +1,56 @@
+{%extends "Boilerplate.html"%}
+{% block title %}Yeni Yükemeler{% endblock %}
+{%load static%}
+{%block content%}
+    <div class="container my-24 mx-auto text-white">
+        <h1 class="text-4xl D w-max mx-auto my-2">En Son Yüklenenler</h2>
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+        <div class="grid grid-cols-2 gap-10 mx-auto">
+            {% for x in Chapter %}
+                <a href="{{x.chapter_url}}" target="_blank">
+                    <div class="bgl">
+                        <table>
+                            <tr>
+                                <td><img src="/media/{{x.manga.manga_image}} " alt="" class="object-fill h-56 w-40"></td>
+                                <td class="pl-8">
+                                    <h2 class="text-4xl M px-10 py-2">{{x.manga.manga_name}}</h2>
+                                    <h4 class=" px-10 text-3xl D">{{x.chapter_number}}.Bölüm </h4>
+                                </td>
+                                <td>
+                                    <h4 class="px-10 text-3xl D py-2">Yükeleyen :<br> <span class="my-2">{{x.fansub.fansub_name}}</span></h4>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+        <hr class="h-px my-4 bg-white border-0">
+
+        <div class="pagination mx-auto p-2 flex w-max mt-4 bg-gradient-to-r from-rose-200 to-teal-200 roulnded-lg">
+            <span class="step-links">
+                {% if Chapter.has_previous %}
+                    <a href="?page=1"> <div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-r-2">&laquo;</div></a>
+                    <a href="?page={{ Chapter.previous_page_number }}"><div class="p-3 text-lg M w-max mx-auto inline mx-2 border-r-2">Önceki</div></a>
+                {% endif %}
+        
+                <span class="current text-lg   p-3 mx-2">
+                    {{ Chapter.number }}
+                </span>
+        
+                {% if Chapter.has_next %}
+                    <a href="?page={{ Chapter.next_page_number }}"><div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-l-2">Sonraki</div></a>
+                    <a href="?page={{ Chapter.paginator.num_pages }}"><div class="p-3 text-lg M  w-max mx-auto inline mx-2 border-l-2">&raquo;</div> </a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{%endblock content%}
+

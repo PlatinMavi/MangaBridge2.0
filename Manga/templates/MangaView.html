@@ -1,0 +1,104 @@
+{%extends "Boilerplate.html"%}
+{% block title %}{{Manga.manga_name}}{% endblock %}
+{%load static%}
+{%block content%}
+    
+    <div class="container mx-auto py-10 text-white">
+
+        <div class="w-full h-96 bg-white rounded-lg my-16">
+            <p class="mx-auto pt-36 text-3xl w-max ">Reklam</p>
+        </div>
+
+        <div class="grid grid-flow-row-dense grid-cols-5 grid-rows-1 w-full gap-10 mx-auto flex">
+            <div class="w-64 bgl col-span-1">
+                <img src="/media/{{ Manga.manga_image }}" alt="" class="flex-none h-96 w-64">
+                <h1 class="text-2xl M my-4 mx-5">{{Manga.manga_name}}</h1>
+                <hr class="h-px my-4 bg-white border-0">
+                <h4 class="text-2xl M my-4 mx-5">{{BolumSayi}} Bölüm</h4>
+                <hr class="h-px my-4 bg-white border-0">
+                <h3 class="text-2xl M my-4 mx-5">Görüntülenme:</h3>
+                <p class="text-lg M my-1 mx-5">{{Manga.manga_views}}</p>
+                <hr class="h-px my-4 bg-white border-0">
+                <h5 class="text-lg M mx-3">Açıklama:</h5>
+                <p class="M p-2 text-sm">{{Manga.manga_description}}</p>
+                <hr class="h-px my-4 bg-white border-0">
+                <h4 class="text-xl mx-auto w-max M my-2">Kategori</h4>
+                <div class="grid grid-cols-2 mx-auto gap-1">
+                    
+                    {%if Categorys %}
+                        {%for x in Categorys%}
+                            <p class="mx-auto shadow-lg p-3">{{x.category_name}}</p>
+                        {%endfor%}
+                    {%endif%}
+
+                </div>
+                <hr class="h-px my-4 bg-white border-0">
+            </div>
+            
+            <div class="col-span-4 ">
+                <div class="flex grid grid-cols-2 gap-6">
+                    {%if IsSaved%}
+                        <a href="{{ Manga.id }}/Save" class="p-4 mb-3 bgl"><h3 class="text-3xl w-max mx-auto M">Kaydedilenlerden Kaldır</h3></a>
+                    {%else%}
+                        <a href="{{ Manga.id }}/Save" class="p-4 mb-3 bgl"><h3 class="text-3xl w-max mx-auto M">Kaydet</h3></a>
+                    {%endif%}
+                    <a href="" class="p-4 mb-3 bgl"><h3 class="text-3xl w-max mx-auto M">Filler</h3></a>
+                </div>
+                <div class="bgl p-10">
+                    <h2 class="M text-2xl">Çevirmenler: {%for x in Fansub%} <button class="mx-8 rounded-xl my-1 text-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-2 text-white D"
+                        type="button"
+                        onclick="collapser('{{x.fansub_name}}')">
+                        {{x.fansub_name}}
+                    </button>{%endfor%} </h2>
+                    <hr class="h-px my-4 white border-0">
+                    {%for x in Fansub%}
+                        <div class="MmM hidden" id="{{x.fansub_name}}">
+                            <h3 class="M text-3xl w-max mx-auto my-5">{{x.fansub_name}}</h3>
+                            <div class="grid grid-cols-6 gap-8 mx-auto">
+                                {%for y in Chapter%}
+                                    {%if y.fansub.fansub_name == x.fansub_name %}
+                                        <a href="{{y.chapter_url}}" target="_blank">
+                                            <div class="h-12 bgd p-2 object-center">
+                                                <h5 class="M text-xl w-max mx-auto">{{y.chapter_number}}. Bölüm</h5>
+                                            </div>
+                                        </a>
+                                    {%endif%}
+                                {%endfor%}
+                            </div>
+                        </div>
+                    {%endfor%}
+                    <script>
+                        function collapser(x){
+                            var d = document.getElementById(x)
+                            var g = document.getElementsByClassName("MmM")
+
+                            for (let i = 0; i < g.length; i++){
+                                if (g[i].classList.contains("hidden")==false){
+                                    g[i].classList.add("hidden")
+                                }
+                            }
+
+                            if (d.classList.contains("hidden") == true) {
+                                d.classList.remove("hidden")
+                            } else if (d.classList.contains("hidden") == false) {
+                                d.classList.add("hidden")
+                            }  
+                        }
+                    </script>
+
+                    <div class="w-full h-96 bg-white rounded-lg my-10">
+                        <p class="mx-auto pt-36 text-3xl w-max ">Reklam</p>
+                    </div>
+
+                </div>
+                <div class="bgl p-10 my-5">
+                    <p class="mx-auto text-3xl w-max pt-3">
+                        yorumlar(work in progress)
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{%endblock content%}

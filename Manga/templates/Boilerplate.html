@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %} MangaBridge {% endblock %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/General.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@400;700&family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8ae22b070a.js" crossorigin="anonymous"></script>
+    <style>
+        .B{
+            font-family: 'Bebas Neue', cursive;
+        }
+        .D{
+            font-family: 'Dosis', sans-serif;
+        }
+        .M{
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bgd{
+            background-color: #152D35;
+        }
+        .bgl{
+            background-color: #345B63;
+        }
+        .bgvl{
+            background-color: #D4ECDD;
+        }
+    </style>
+
+</head>
+<body class="bgd">
+    <nav class="w-full fixed top-0 left-0 z-50 " style="background-color: #152d3573;">
+        <div class="flex ">
+            <div class=" p-4 flex my-2 ml-4">
+                <a href="/"><i class="fa-solid fa-house fa-2xl text-white mx-4 w-max"></i></a>
+                <a href="Archive.html"><i class="fa-solid fa-book fa-2xl text-white mx-4 w-max"></i></a>
+                <a href="SSS.html"><i class="fa-solid fa-question fa-2xl text-white mx-4 w-max"></i></a>
+                <a href=""><i class="fa-solid fa-magnifying-glass fa-2xl text-white mx-4 w-max"></i></a>
+                <a href="/NewUpload"><i class="fa-solid fa-up-right-from-square fa-2xl text-white mx-4 w-max"></i></a>
+                <a href="/Duyuru"><i class="fa-solid fa-bullhorn fa-2xl fa-2xl text-white mx-4 w-max"></i></a>
+                <!-- <a href=""><i class="fa-solid fa-bookmark fa-2xl text-white mx-4 w-max"></i></a> -->
+            </div>
+            {% if user.is_authenticated%}
+                <div class="flex items-center absolute right-0 w-max p-3">
+                    <div class="flex items-center ml-3">
+                        <div class="flex items-center mr-4">
+                            <button type="button" class="flex" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                <h2 class="text-white text-2xl M mr-2 mt-2"> {{user.username}}</h2>
+                                <img class="w-12 h-12 rounded-full" src="/media/{{user.profile_picture}}">
+                            </button>
+                        </div>
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                            <ul class="py-1" role="none">
+                                <li>
+                                    <a href="/User/Logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Çıkış Yap</a>
+                                </li>
+                                <li>
+                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Profil</a>
+                                </li>
+                                <li>
+                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Kaydedilenlerim</a>
+                                </li>
+                                <li>
+                                    <a href="" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 " role="menuitem">Koleksiyonlar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {%else%}
+                <div class="absolute right-0 w-max my-2 p-4 flex ">
+                    <a href="/User/Login" class="flex"><h1 class="text-white text-2xl M ">Giriş</h1> <i class="fa-solid fa-right-to-bracket fa-2xl text-white mx-4 w-max my-4"></i></a>
+                    <a href="/User/Register" class="flex"><h1 class="text-white text-2xl M ">Kayıt Ol</h1> <i class="fa-solid fa-user-plus fa-2xl text-white my-4 w-max mx-4"></i></a>    
+                </div>
+            {%endif%}
+        </div>
+    </nav>
+        {% block content %}
+        
+        {% endblock content%}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+</body>
+</html>
