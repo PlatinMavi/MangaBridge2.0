@@ -40,13 +40,12 @@
 <body class="bgd">
     <nav class="w-full fixed top-0 left-0 z-50 " style="background-color: #152d3573;">
         <div class="flex ">
-            <div class=" p-4 flex my-2 ml-4">
-                <a href="/"><i class="fa-solid fa-house fa-2xl text-white mx-4 w-max"></i></a>
-                <a href="Archive.html"><i class="fa-solid fa-book fa-2xl text-white mx-4 w-max"></i></a>
-                <a href="SSS.html"><i class="fa-solid fa-question fa-2xl text-white mx-4 w-max"></i></a>
-                <a href=""><i class="fa-solid fa-magnifying-glass fa-2xl text-white mx-4 w-max"></i></a>
-                <a href="/NewUpload"><i class="fa-solid fa-up-right-from-square fa-2xl text-white mx-4 w-max"></i></a>
-                <a href="/Duyuru"><i class="fa-solid fa-bullhorn fa-2xl fa-2xl text-white mx-4 w-max"></i></a>
+            <div class=" p-4 flex my-2 ml-4 text-white text-2xl">
+                <a href="/" class="mx-4">Ana Sayfa</a>
+                <a href="/Archive." class="mx-4">Arşiv</a>
+                <a href="SSS.html" class="mx-4">SSS</a>
+                <a href="/NewUpload" class="mx-4">Yeni Yüklemeler</a>
+                <a href="/Duyuru" class="mx-4">Duyurular</a>
                 <!-- <a href=""><i class="fa-solid fa-bookmark fa-2xl text-white mx-4 w-max"></i></a> -->
             </div>
             {% if user.is_authenticated%}

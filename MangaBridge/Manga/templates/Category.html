@@ -1,0 +1,65 @@
+{%extends "Boilerplate.html"%}
+{% block title %}Arşiv{% endblock %}
+{%load static%}
+{%block content%}
+    <div class="container my-24 mx-auto text-white">
+        <h1 class="text-4xl D w-max mx-auto my-2">Kategoriler</h1>
+        <hr class="h-px my-4 bg-white border-0">
+
+        <div class="grid grid-cols-10 gap-6">
+            {%for x in Category%}
+                <a class="bgl text-center p-4" href="?category={{x.id}}"><h2 class="M text-xl ">{{x.category_name}}</h2></a>
+            {%endfor%}
+        </div>
+
+        <hr class="h-px my-4 bg-white border-0">
+
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+
+        <h1 class="text-4xl D w-max mx-auto my-2">Arşiv, {{MangaLen}} Manga</h1>
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="grid grid-cols-2 gap-6">
+            {%for x in Manga%}
+                <a href="/Details/{{ x.id }}" target="_blank">
+                    <div class="bgl">
+                        <table>
+                            <tr>
+                                <td><img src="/media/{{x.manga_image}} " alt="" class="object-fill h-56 w-40"></td>
+                                <td class="pl-8">
+                                    <h2 class="text-4xl M px-10 py-2 w-40">{{x.manga_name}}</h2>
+                                </td>
+                                <td>
+                                    <p class="text-center w-64 h-56 overflow-hidden">{{x.manga_description}}</p>
+                                </td>
+                                <td>
+                                    <i class="fa-solid fa-up-right-from-square w-max mx-8 flex" style="font-size: 64px;"></i>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </a>
+            {%endfor%}
+        </div>
+
+        <div class="pagination mx-auto p-2 flex w-max mt-4 bgl roulnded-lg">
+            <span class="step-links">
+                {% if Manga.has_previous %}
+                    <a href="?page=1"> <div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-r-2">&laquo;</div></a>
+                    <a href="?page={{ Manga.previous_page_number }}"><div class="p-3 text-lg M w-max mx-auto inline mx-2 border-r-2">Önceki</div></a>
+                {% endif %}
+        
+                <span class="current text-lg   p-3 mx-2">
+                    {{ Manga.number }}
+                </span>
+        
+                {% if Manga.has_next %}
+                    <a href="?page={{ Manga.next_page_number }}"><div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-l-2">Sonraki</div></a>
+                    <a href="?page={{ Manga.paginator.num_pages }}"><div class="p-3 text-lg M  w-max mx-auto inline mx-2 border-l-2">&raquo;</div> </a>
+                {% endif %}
+            </span>
+        </div>
+
+    </div>
+{%endblock content%}

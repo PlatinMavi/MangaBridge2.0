@@ -100,3 +100,25 @@ def SaveManga(request, id):
         cu.bookmarks.add(manga)
 
     return HttpResponseRedirect(reverse("MangaView", args=[id])) 
+
+def Archive(request):
+    filte = request.GET.get("category")
+    manga = Manga.objects.all()
+    if filte != None:
+        manga = manga.filter(manga_categorys=filte)
+
+    cats = Categorys.objects.all()
+    paginator = Paginator(manga, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    manlen = len(manga)
+    
+    context = {
+        "Category": cats,
+        "Manga": page_obj,
+        "MangaLen":manlen,
+    }
+
+    template = loader.get_template("Category.html")
+
+    return HttpResponse(template.render(context, request))
