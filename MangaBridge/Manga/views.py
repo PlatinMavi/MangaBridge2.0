@@ -108,7 +108,7 @@ def Archive(request):
         manga = manga.filter(manga_categorys=filte)
 
     cats = Categorys.objects.all()
-    paginator = Paginator(manga, 20)
+    paginator = Paginator(manga, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     manlen = len(manga)

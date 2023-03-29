@@ -6,7 +6,9 @@
         <h1 class="text-4xl D w-max mx-auto my-2">Kategoriler</h1>
         <hr class="h-px my-4 bg-white border-0">
 
+        <a class=" text-center my-3" href="/Archive"><h2 class="M text-3xl bgl py-3 my-3">Sıfırla</h2></a>
         <div class="grid grid-cols-10 gap-6">
+            
             {%for x in Category%}
                 <a class="bgl text-center p-4" href="?category={{x.id}}"><h2 class="M text-xl ">{{x.category_name}}</h2></a>
             {%endfor%}
@@ -46,8 +48,8 @@
         <div class="pagination mx-auto p-2 flex w-max mt-4 bgl roulnded-lg">
             <span class="step-links">
                 {% if Manga.has_previous %}
-                    <a href="?page=1"> <div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-r-2">&laquo;</div></a>
-                    <a href="?page={{ Manga.previous_page_number }}"><div class="p-3 text-lg M w-max mx-auto inline mx-2 border-r-2">Önceki</div></a>
+                    <a href="?category={{ request.GET.category|default:'' }}&page=1"> <div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-r-2">&laquo;</div></a>
+                    <a href="?category={{ request.GET.category|default:'' }}&page={{ Manga.previous_page_number }}"><div class="p-3 text-lg M w-max mx-auto inline mx-2 border-r-2">Önceki</div></a>
                 {% endif %}
         
                 <span class="current text-lg   p-3 mx-2">
@@ -55,8 +57,8 @@
                 </span>
         
                 {% if Manga.has_next %}
-                    <a href="?page={{ Manga.next_page_number }}"><div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-l-2">Sonraki</div></a>
-                    <a href="?page={{ Manga.paginator.num_pages }}"><div class="p-3 text-lg M  w-max mx-auto inline mx-2 border-l-2">&raquo;</div> </a>
+                    <a href="?category={{ request.GET.category|default:'' }}&page={{ Manga.next_page_number }}"><div class="p-3 text-lg M w-max mx-auto  inline mx-2 border-l-2">Sonraki</div></a>
+                    <a href="?category={{ request.GET.category|default:'' }}&page={{ Manga.paginator.num_pages }}"><div class="p-3 text-lg M  w-max mx-auto inline mx-2 border-l-2">&raquo;</div> </a>
                 {% endif %}
             </span>
         </div>
