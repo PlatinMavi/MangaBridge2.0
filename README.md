@@ -1,1 +1,0 @@
-# MangaBridge2.0

@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 class Categorys(models.Model):
     category_name = models.CharField(max_length=255)
@@ -22,9 +21,6 @@ class Manga(models.Model):
     def __str__(self):
         return f"{self.id}, {self.manga_name}"
     
-    
-        
-
 class Fansub(models.Model):
     fansub_name = models.CharField(max_length=255, default="null")
 
@@ -44,8 +40,3 @@ class Chapter(models.Model):
 class Duyuru(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=1024)
-
-
-
-
-
