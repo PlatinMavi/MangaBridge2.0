@@ -108,7 +108,7 @@ def Archive(request):
         manga = manga.filter(manga_categorys=filte)
 
     cats = Categorys.objects.all()
-    paginator = Paginator(manga, 2)
+    paginator = Paginator(manga, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     manlen = len(manga)
@@ -120,5 +120,26 @@ def Archive(request):
     }
 
     template = loader.get_template("Category.html")
+
+    return HttpResponse(template.render(context, request))
+
+def Search(request):
+    search = request.GET.get("Search")
+    mangaresults = Manga.objects.all()
+
+    if search != None:
+        mangaresults = mangaresults.filter(manga_name__icontains=search)
+
+    paginator = Paginator(mangaresults, 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    manlen = len(mangaresults)
+
+    context = {
+        "Manga":page_obj,
+        "MangaLen":manlen,
+    }
+
+    template = loader.get_template("Search.html")
 
     return HttpResponse(template.render(context, request))

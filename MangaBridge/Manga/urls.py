@@ -8,5 +8,6 @@ urlpatterns = [
     path("NewUpload/", views.NewUploads, name="NewUploads"),
     path("Duyuru/", views.DuyuruView, name="duyuru"),
     path("Details/<int:id>/Save", views.SaveManga, name="save"),
-    path("Archive/", views.Archive, name="archive")
+    path("Archive/", views.Archive, name="archive"),
+    path("Search/", views.Search, name="search")
 ]

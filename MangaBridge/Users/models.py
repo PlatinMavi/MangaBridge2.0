@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
     bio = models.TextField(max_length=1000, null=True)
     profile_picture = models.ImageField(upload_to="pp", default="thumbnail/noimage.png")
 
-    bookmarks = models.ManyToManyField(Manga, null=True)
+    bookmarks = models.ManyToManyField(Manga)
     def __str__(self):
         return self.username
     

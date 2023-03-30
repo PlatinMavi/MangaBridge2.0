@@ -18,13 +18,13 @@
         <div class="grid grid-cols-5 mx-auto">
             {%for x in MostView%}
                 <div class="capsule_wrapper mx-auto">
-                    <div class="capsule">
+                    <div class="capsule ">
                         <a href="Details/{{ x.id }}" class="capsule_link">
                             <!-- <div class="capsule_gradient"></div> -->
                             <img src="/media/{{ x.manga_image }}" alt="" class="capsule_image">
                         </a>
                     </div>
-                    <h3 class="text-3xl M w-max mx-auto my-3">{{x.manga_name}}</h3>
+                    <h3 class="text-3xl M w-64 my-3 text-center">{{x.manga_name}}</h3>
                 </div>
             {%endfor%}
         </div>

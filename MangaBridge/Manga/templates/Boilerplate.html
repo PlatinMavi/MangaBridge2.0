@@ -48,6 +48,12 @@
                 <a href="/Duyuru" class="mx-4">Duyurular</a>
                 <!-- <a href=""><i class="fa-solid fa-bookmark fa-2xl text-white mx-4 w-max"></i></a> -->
             </div>
+
+            <form method="GET" class=" bg-opacity-80 rounded-lg ml-4 mt-5" action="/Search/">
+                <input name="Search" type="text" placeholder="Ara..." class="rounded-lg bg-white bg-opacity-80">
+                <button type="submit" class="p-1"><i class="fa-solid fa-magnifying-glass fa-2xl text-white"></i></button>
+            </form>
+
             {% if user.is_authenticated%}
                 <div class="flex items-center absolute right-0 w-max p-3">
                     <div class="flex items-center ml-3">
