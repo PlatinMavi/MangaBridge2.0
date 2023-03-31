@@ -1,0 +1,23 @@
+{%extends "Boilerplate.html"%}
+{% block title %}SSS{% endblock %}
+{%load static%}
+{%block content%}
+    <div class="container mx-auto my-24 text-white">
+        <h1 class="text-4xl D w-max mx-auto my-2">Sıkça Sorulan Sorular</h1>
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="w-full h-96 bg-white rounded-lg my-5">
+            <p class="mx-auto pt-36 text-3xl w-max">Reklam</p>
+        </div>
+        {%for x in SSS%}
+        <div class="my-8">
+            <div class="bgl my-2 p-4 text-xl font-bold M">
+                <h2><span class="text-2xl">+</span> {{x.Q}} </h2>
+            </div>
+
+            <div class="bgl my-2 p-4  M">
+                <p><span class="text-2xl font-bold">-</span>  {{x.A}} </p>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+{%endblock content%}

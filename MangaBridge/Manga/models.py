@@ -40,3 +40,7 @@ class Chapter(models.Model):
 class Duyuru(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=1024)
+
+class SSS(models.Model):
+    Q = models.CharField(max_length=1024)
+    A = models.CharField(max_length=2048)

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .models import Manga, Chapter, Fansub, Duyuru, Categorys
+from .models import Manga, Chapter, Fansub, Duyuru, Categorys, SSS
 from django.core.paginator import Paginator
 from Users.models import CustomUser
 from django.urls import reverse
@@ -141,5 +141,16 @@ def Search(request):
     }
 
     template = loader.get_template("Search.html")
+
+    return HttpResponse(template.render(context, request))
+
+def QnA(request):
+    q = SSS.objects.all()
+
+    context = {
+        "SSS":q
+    }
+
+    template = loader.get_template("SSS.html")
 
     return HttpResponse(template.render(context, request))
