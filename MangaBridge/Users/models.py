@@ -18,3 +18,7 @@ class Collections(models.Model):
     content = models.ManyToManyField(Manga)
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
+class Comments(models.Model):
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    comment = models.TextField()
+    manga = models.ForeignKey(Manga, on_delete=models.CASCADE)

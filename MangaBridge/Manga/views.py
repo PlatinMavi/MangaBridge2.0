@@ -3,8 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Manga, Chapter, Fansub, Duyuru, Categorys, SSS
 from django.core.paginator import Paginator
-from Users.models import CustomUser
+from Users.models import CustomUser, Comments
 from django.urls import reverse
+from .forms import CommentForm
 # Create your views here.
 def Index(request):
     manga = Manga.objects.all()
@@ -35,6 +36,8 @@ def MangaView(request, id):
     chapter_ = chapter.order_by("fansub","chapter_number")
     available_fansubs = list(set([o.fansub for o in chapter]))
     categorys = manga.manga_categorys.all()
+    comments = Comments.objects.all().filter(manga=id)
+
     manga.manga_views = manga.manga_views+1
     manga.save()
 
@@ -51,13 +54,24 @@ def MangaView(request, id):
         else:
             issaved = False
 
+    if request.method == "POST":
+        User = request.user
+        txt = request.POST.get("content")
+        if len(txt) > 2 :
+            o = Comments.objects.create(comment = txt, owner = User, manga = manga)
+            o.save()
+            return HttpResponseRedirect(reverse("MangaView", args=[id])) 
+        else:
+            print("hatatatatatatata")
+
     context={
         "Manga": manga,
         "Chapter": chapter_,
         "Fansub": available_fansubs,
         "BolumSayi": bolsay,
         "Categorys": categorys,
-        "IsSaved":  issaved
+        "IsSaved":  issaved,
+        "Comments": comments,
     }
 
     template = loader.get_template("MangaView.html")
@@ -88,18 +102,6 @@ def DuyuruView(request):
     template = loader.get_template("Duyuru.html")
 
     return HttpResponse(template.render(context, request))
-
-def SaveManga(request, id):
-    User = request.user
-    manga = Manga.objects.get(id = id)
-    cu = CustomUser.objects.get(username=User)
-    if cu.bookmarks.filter(id = id).exists():
-        cu.bookmarks.remove(manga)
-
-    else :
-        cu.bookmarks.add(manga)
-
-    return HttpResponseRedirect(reverse("MangaView", args=[id])) 
 
 def Archive(request):
     filte = request.GET.get("category")
@@ -154,3 +156,15 @@ def QnA(request):
     template = loader.get_template("SSS.html")
 
     return HttpResponse(template.render(context, request))
+
+def SaveManga(request, id):
+    User = request.user
+    manga = Manga.objects.get(id = id)
+    cu = CustomUser.objects.get(username=User)
+    if cu.bookmarks.filter(id = id).exists():
+        cu.bookmarks.remove(manga)
+
+    else :
+        cu.bookmarks.add(manga)
+
+    return HttpResponseRedirect(reverse("MangaView", args=[id])) 

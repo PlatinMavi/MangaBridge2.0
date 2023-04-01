@@ -45,7 +45,7 @@
                     <a href="" class="p-4 mb-3 bgl"><h3 class="text-3xl w-max mx-auto M">Filler</h3></a>
                 </div>
                 <div class="bgl p-10">
-                    <h2 class="M text-2xl">Çevirmenler: {%for x in Fansub%} <button class="mx-8 rounded-xl my-1 text-xl bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-2 text-white D"
+                    <h2 class="M text-2xl">Çevirmenler: {%for x in Fansub%} <button style="background-color:#152D35;" class="mx-8 rounded-xl my-1 text-xl p-2 text-white D"
                         type="button"
                         onclick="collapser('{{x.fansub_name}}')">
                         {{x.fansub_name}}
@@ -91,13 +91,34 @@
                     </div>
 
                 </div>
-                <div class="bgl p-10 my-5">
-                    <p class="mx-auto text-3xl w-max pt-3">
-                        yorumlar(work in progress)
-                    </p>
-                </div>
+                {% if user.is_authenticated%}
+                    <form method="POST" class="flex my-8 bgl">
+                        {%csrf_token%}
+                        
+                        <!-- <input type="text" class="bgl w-full p-4 my-2"> -->
+                        <input type="text" name="content" class="w-full text-black" placeholder="Yorum Yazınız...">
+                        <button type="submit" class="bgl my-2 p-2" name="Content">Gönder</button>
+                    </form>
+                {%else%}
+                    <a href="/User/Login">
+                        <div class="bgl p-8 text-2xl w-full mx-auto my-8 text-center">
+                            <h4 >Yorum Yapabilmek İçin Giriş Yapınız</h4>
+                        </div>
+                    </a>
+                {%endif%}
+                
+                {%for x in Comments%}
+                    <div class="bgl p-4 w-full my-4">
+                        <div class="flex">
+                            <img class="w-12 h-12 rounded-full mx-2" src="/media/{{x.owner.profile_picture}}">
+                            <h4 class="text-white text-2xl M mr-2 mt-2"> {{x.owner.username}}</h4>
+                        </div>
 
-
+                        <p class="text-md my-2">
+                            {{x.comment}}
+                        </p>
+                    </div>
+                {%endfor%}
             </div>
         </div>
     </div>
