@@ -5,7 +5,6 @@ from .models import Manga, Chapter, Fansub, Duyuru, Categorys, SSS
 from django.core.paginator import Paginator
 from Users.models import CustomUser, Comments
 from django.urls import reverse
-from .forms import CommentForm
 # Create your views here.
 def Index(request):
     manga = Manga.objects.all()

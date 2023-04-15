@@ -1,10 +1,21 @@
 {% extends "Boilerplate.html"%}
 {% block content%}
-<div class="mt-24 mx-auto w-max bg-teal-50 p-4">
-    <form method="POST">
+<div class="mt-32 mx-auto bgl p-4 text-white w-max">
+    <form method="POST" class="w-96">
         {%csrf_token%}
-        <fieldset><legend>Join Today</legend> {{Form.as_p}} </fieldset>
-        <button type="submit">submit</button>
+        <h3 class="m-max mx-auto my-2 text-center text-2xl M">Kayıt Ol</h3>
+        <hr class="h-px my-4 bg-white border-0">
+        <h5 class="m-max mx-auto my2 text-center M mb-2 mt-4">Kullanıcı adı</h5>
+        <input type="text" id="username" name="username" class="w-full text-black" placeholder="Kullanıcı adı">
+        <h5 class="m-max mx-auto my2 text-center M my-2">E-posta</h5>
+        <input type="text" id="email" name="email" class="w-full text-black" placeholder="E-posta">
+        <h5 class="m-max mx-auto my2 text-center M my-2">Şifre</h5>
+        <input type="text" id="password1" name="password1" class="w-full text-black" placeholder="Şifre">
+        <h5 class="m-max mx-auto my2 text-center M my-2">Şifrenizi Doğrulayın</h5>
+        <input type="text" id="password2" name="password2" class="w-full text-black" placeholder="Tekrar giriniz">
+        <hr class="h-px my-4 bg-white border-0">
+        **{{Form.errors}}**
+        <div class="w-max mx-auto bgd text-center M m-4 py-2 px-4"><button type="submit">Kayıt ol</button></div>
     </form>
 </div>
 {%endblock content%}

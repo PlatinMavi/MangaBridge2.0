@@ -1,0 +1,15 @@
+{% extends "Boilerplate.html"%}
+{% block content%}
+<div class="container mx-auto mt-32">
+    <div class="grid grid-cols-5 felx gap-16">
+        {%for x in Kaydedilenler%}
+            <div class=" w-full my-4">
+                
+                <img src="/media/{{ x.manga_image }}" alt="" class="flex-none h-96 w-64">
+                <h1 class="text-center text-white text-xl my-2"> {{x.manga_name}} </h1>
+                
+            </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock content%}

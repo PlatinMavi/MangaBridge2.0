@@ -1,13 +1,16 @@
 {% extends "Boilerplate.html"%}
 {% block content%}
-    <div class=" w-max mx-auto my-24 bg-teal-50">
-        <form action="" method="POST">
-            {%csrf_token%}
-            <fieldset>
-                <legend>login</legend>
-                {{Form.as_p}}
-            </fieldset>
-            <button type="submit">submit</button>
-        </form>
-    </div>
+<div class="mt-32 mx-auto bgl p-4 text-white w-max">
+    <form method="POST" class="w-96">
+        {%csrf_token%}
+        <h3 class="m-max mx-auto my-2 text-center text-2xl M">Giriş Yap</h3>
+        <hr class="h-px my-4 bg-white border-0">
+        <h5 class="m-max mx-auto my2 text-center M mb-2 mt-4">Kullanıcı adı veya E-posta</h5>
+        <input type="text" id="username" name="username" class="w-full" placeholder="Kullanıcı adı veya e-posta">
+        <h5 class="m-max mx-auto my2 text-center M my-2">Şifre</h5>
+        <input type="text" id="password" name="password" class="w-full" placeholder="Şifre">
+        <hr class="h-px my-4 bg-white border-0">
+        <div class="w-max mx-auto bgd text-center M m-4 py-2 px-4"><button type="submit">Giriş</button></div>
+    </form>
+</div>
 {%endblock content%}

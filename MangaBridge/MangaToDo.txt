@@ -1,5 +1,6 @@
 notificate bookmark
 derecelendirme
-yorum
 mangabridge çeviri-okuma
-+18 kısım
+kaydedilenler
+kolekdiyonlar
+profil
