@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import UserRegistrationForm, UserLoginForm
 from django.http import HttpResponse
 from django.template import loader
+from .models import Collections
 # Create your views here.
 
 def custom_login(request):
@@ -58,6 +59,28 @@ def Register(request):
         context={"Form": form}
     )
 
+def Profile(request, id):
+
+    context = {
+
+    }
+
+    template = loader.get_template("Profile.html")
+
+    return HttpResponse(template.render(context, request))
+
+def KoleksiyonlarDetay(request, id):
+    k = Collections.objects.get(id = id)
+
+    context = {
+        "Koleksiyon":k
+    }
+
+    template = loader.get_template("CollectionDetails.html")
+
+    return HttpResponse(template.render(context, request))
+
+@login_required
 def saved(request):
     User = request.user
 
@@ -70,18 +93,24 @@ def saved(request):
     return HttpResponse(template.render(context, request))
 
 @login_required
-
 def custom_logout(request):
     logout(request)
     return redirect("/")
 
 @login_required
-def Profile(request, id):
+def Koleksiyonlar(request):
+    User = request.user
+    k = Collections.objects.all().filter(owner = User)
+
+    j = False
+    if not k :
+        j = True
 
     context = {
-
+        "Koleksiyon":k,
+        "isNull":j
     }
 
-    template = loader.get_template("Profile.html")
+    template = loader.get_template("Collections.html")
 
     return HttpResponse(template.render(context, request))

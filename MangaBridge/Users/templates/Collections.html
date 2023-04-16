@@ -1,0 +1,16 @@
+{% extends "Boilerplate.html"%}
+{% block content%}
+    <div class="container mx-auto mt-32">
+        <div class="grid cols-8 gap-6">
+            {%if isNull%}
+            <h1 class="M text-white text-5xl text-center">Görünüşe göre hiç koleksiyonunuz yok O_O</h1>
+            <hr class="h-px my-4 bg-white border-0">
+            {%else%}
+                {%for x in Koleksiyon%}
+                    {{x.title}}
+                {%endfor%}
+            {%endif%}
+        </div>
+        
+    </div>
+{%endblock content%}
